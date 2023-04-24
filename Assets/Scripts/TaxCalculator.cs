@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using SpeechLib;
+using System.Threading.Tasks;
 
 public class TaxCalculator : MonoBehaviour
 {
@@ -87,12 +88,21 @@ public class TaxCalculator : MonoBehaviour
     }
 
     // Text to Speech
-    private void Speak(string textToSpeak)
+    private async void Speak(string textToSpeech)
     {
         if(textToSpeechEnabled)
         {
             SpVoice voice = new SpVoice();
-            voice.Speak(textToSpeak);
+            await SpeakAsync(textToSpeech);
         }
+    }
+
+    private Task SpeakAsync(string textToSpeak)
+    {
+        return Task.Run(() =>
+        {
+            SpVoice voice = new SpVoice();
+            voice.Speak(textToSpeak);
+        });
     }
 }
