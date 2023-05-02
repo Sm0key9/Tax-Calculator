@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
 using SpeechLib;
 using System.Threading.Tasks;
+using System;
+using TMPro;
 
 public class TaxCalculator : MonoBehaviour
 {
     // Constant rate for the Medicare Levy
     const double MEDICARE_LEVY = 0.02;
-
+    public TextMeshProUGUI salary;
     // Variables
     bool textToSpeechEnabled = true;
 
@@ -38,7 +40,7 @@ public class TaxCalculator : MonoBehaviour
     {
         // Get from user. E.g. input box
         // Validate the input (ensure it is a positive, valid number)
-        double grossYearlySalary = 1000;
+        double grossYearlySalary = double.Parse(salary.text);
         return grossYearlySalary;
     }
 
