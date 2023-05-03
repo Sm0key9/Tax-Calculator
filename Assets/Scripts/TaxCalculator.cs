@@ -1,20 +1,69 @@
 ﻿using UnityEngine;
 using SpeechLib;
 using System.Threading.Tasks;
+using UnityEngine.UI;
+using TMPro;
 
 public class TaxCalculator : MonoBehaviour
 {
     // Constant rate for the Medicare Levy
     const double MEDICARE_LEVY = 0.02;
-
+    public TMP_Dropdown dropdown;
     // Variables
     bool textToSpeechEnabled = true;
+    public int stage = 0;
 
     private void Start()
     {
-        Speak("Welcome to the A.T.O. Tax Calculator");
+        Speak("Welcome to the A.T.O. Tax Calculator Press 1 for weekly. Press 2 for monthly. or Press 3 for Yearly");
+        stage++;
     }
 
+    private void Update()
+    {
+        if (Input.anyKeyDown)
+        {
+            CheckInput();
+        }
+    }
+
+    void CheckInput()
+    {
+        if (stage == 1)
+        {
+            string payperiod = "";
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                Speak("You selected Weekly.");
+                dropdown.value = 0;
+                payperiod = "weekly";
+                Speak("Please enter your " + payperiod + " income and press enter");
+                stage = 2;
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                dropdown.value = 1;
+                Speak("You selected Monthly.");
+                payperiod = "monthly";
+                Speak("Please enter your " + payperiod + " income and press enter");
+                stage = 2;
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                dropdown.value = 2;
+                Speak("You selected Yearly.");
+                payperiod = "yearly";
+                Speak("Please enter your " + payperiod + " income and press enter");
+                stage = 2;
+            }
+
+
+        }
+        else if (stage == 2)
+        {
+            Speak("Welcome to stage 2");
+        }
+    }
     // Run this function on the click event of your 'Calculate' button
     public void Calculate()
     {
@@ -88,7 +137,7 @@ public class TaxCalculator : MonoBehaviour
     }
 
     // Text to Speech
-    private async void Speak(string textToSpeech)
+    public async void Speak(string textToSpeech)
     {
         if(textToSpeechEnabled)
         {
