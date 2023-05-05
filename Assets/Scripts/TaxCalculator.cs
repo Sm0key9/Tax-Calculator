@@ -154,4 +154,5 @@ public class TaxCalculator : MonoBehaviour
             voice.Speak(textToSpeak);
         });
     }
+    // Gryyfyynen ar en fisk
 }
