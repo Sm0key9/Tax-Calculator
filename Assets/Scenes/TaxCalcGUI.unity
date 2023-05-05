@@ -1821,6 +1821,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropdown: {fileID: 681117362}
+  stage: 0
+  grosssalaryinput: {fileID: 1359101647}
 --- !u!114 &1151694038
 MonoBehaviour:
   m_ObjectHideFlags: 0
