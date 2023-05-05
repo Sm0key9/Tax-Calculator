@@ -4,22 +4,23 @@ using System.Threading.Tasks;
 using UnityEngine.UI;
 using TMPro;
 
-
 public class TaxCalculator : MonoBehaviour
 {
-    //Quinn è simpatico!
+    //Quinn è no simpatico
     // Constant rate for the Medicare Levy
     const double MEDICARE_LEVY = 0.02;
     public TMP_Dropdown dropdown;
     // Variables
     bool textToSpeechEnabled = true;
     public int stage = 0;
-    public TMP_InputField inputField;
+    public TextMeshProUGUI grosssalaryinput;
 
     private void Start()
     {
         Speak("Welcome to the A.T.O. Tax Calculator Press 1 for weekly. Press 2 for monthly. or Press 3 for Yearly");
         stage++;
+       
+
     }
 
     private void Update()
@@ -29,8 +30,6 @@ public class TaxCalculator : MonoBehaviour
             CheckInput();
         }
     }
-    
-    
 
     void CheckInput()
     {
@@ -67,12 +66,6 @@ public class TaxCalculator : MonoBehaviour
         else if (stage == 2)
         {
             Speak("Welcome to stage 2");
-            //GameObject.Find("GrossSalary").GetComponent<InputField>().Select();
-            //inputField.Select();
-            //inputField.ActivateInputField();
-            TMP_InputField inputField = GameObject.Find("inputField").GetComponent<TMP_InputField>();
-            
-
         }
     }
     // Run this function on the click event of your 'Calculate' button
@@ -98,7 +91,7 @@ public class TaxCalculator : MonoBehaviour
     {
         // Get from user. E.g. input box
         // Validate the input (ensure it is a positive, valid number)
-        double grossYearlySalary = 1000;
+       double grossYearlySalary = double.Parse(grosssalaryinput.text);
         return grossYearlySalary;
     }
 
@@ -165,5 +158,5 @@ public class TaxCalculator : MonoBehaviour
             voice.Speak(textToSpeak);
         });
     }
-
+    // Gryyfyynen ar en fisk
 }
