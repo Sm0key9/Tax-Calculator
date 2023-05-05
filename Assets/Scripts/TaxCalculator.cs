@@ -6,6 +6,7 @@ using TMPro;
 
 public class TaxCalculator : MonoBehaviour
 {
+    //Quinn è simpatico!
     // Constant rate for the Medicare Levy
     const double MEDICARE_LEVY = 0.02;
     public TMP_Dropdown dropdown;
