@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using UnityEngine.UI;
 using TMPro;
 
+
 public class TaxCalculator : MonoBehaviour
 {
     //Quinn è simpatico!
@@ -13,6 +14,7 @@ public class TaxCalculator : MonoBehaviour
     // Variables
     bool textToSpeechEnabled = true;
     public int stage = 0;
+    public TMP_InputField inputField;
 
     private void Start()
     {
@@ -27,6 +29,8 @@ public class TaxCalculator : MonoBehaviour
             CheckInput();
         }
     }
+    
+    
 
     void CheckInput()
     {
@@ -63,6 +67,12 @@ public class TaxCalculator : MonoBehaviour
         else if (stage == 2)
         {
             Speak("Welcome to stage 2");
+            //GameObject.Find("GrossSalary").GetComponent<InputField>().Select();
+            //inputField.Select();
+            //inputField.ActivateInputField();
+            TMP_InputField inputField = GameObject.Find("inputField").GetComponent<TMP_InputField>();
+            
+
         }
     }
     // Run this function on the click event of your 'Calculate' button
@@ -155,5 +165,5 @@ public class TaxCalculator : MonoBehaviour
             voice.Speak(textToSpeak);
         });
     }
-    // Gryyfyynen ar en fisk
+
 }
