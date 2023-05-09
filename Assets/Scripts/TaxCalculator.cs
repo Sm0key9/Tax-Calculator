@@ -14,7 +14,7 @@ public class TaxCalculator : MonoBehaviour
     // Variables
     public bool textToSpeechEnabled = true;
     public int stage = 0;
-    public TextMeshProUGUI grosssalaryinput;
+    public TMP_InputField grosssalaryinput;
     public TextMeshProUGUI NetIncome;
 
     private void Start()
@@ -97,8 +97,12 @@ public class TaxCalculator : MonoBehaviour
         // Get from user. E.g. input box
         // Validate the input (ensure it is a positive, valid number)
         print("!" + grosssalaryinput.text + "!");
-        double grossYearlySalary = Convert.ToDouble(grosssalaryinput.text);
-        return grossYearlySalary;
+        double grossYearlySalary = 12;
+        if (double.TryParse((grosssalaryinput.text), out grossYearlySalary))
+        {
+            return grossYearlySalary;
+        }
+        else { return 0; }
     }
 
     private string GetSalaryPayPeriod()
@@ -120,14 +124,14 @@ public class TaxCalculator : MonoBehaviour
         // This is a stub, replace with the real calculation and return the result
         medicareLevyPaid = CalculateMedicareLevy(grossYearlySalary);
         incomeTaxPaid = CalculateIncomeTax(grossYearlySalary);
-        double netIncome = 33000;        
+        double netIncome = grossYearlySalary-medicareLevyPaid-incomeTaxPaid;        
         return netIncome;
     }
 
     private double CalculateMedicareLevy(double grossYearlySalary)
     {
         // This is a stub, replace with the real calculation and return the result
-        double medicareLevyPaid = 2000;        
+        double medicareLevyPaid = grossYearlySalary*0.02;        
         return medicareLevyPaid;
     }
 
@@ -137,7 +141,7 @@ public class TaxCalculator : MonoBehaviour
         double incomeTaxPaid = 0;
         if (grossYearlySalary <= 18200)
         {
-            return incomeTaxPaid;
+            incomeTaxPaid = 0;
         }
         else if (grossYearlySalary > 18200 && grossYearlySalary <= 45000)
         {
@@ -149,7 +153,11 @@ public class TaxCalculator : MonoBehaviour
         }
         else if (grossYearlySalary > 120000 && grossYearlySalary <= 180000)
         {
-            incomeTaxPaid = (grossYearlySalary );
+            incomeTaxPaid = (grossYearlySalary-120000)*0.37+29467;
+        }
+        else
+        {
+            incomeTaxPaid = (grossYearlySalary - 180000) * 0.45 + 51667;
         }
         //double incomeTaxPaid = 15000;
         return incomeTaxPaid;
