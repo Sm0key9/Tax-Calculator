@@ -1875,7 +1875,7 @@ MonoBehaviour:
     m_Options:
     - m_Text: Weekly
       m_Image: {fileID: 0}
-    - m_Text: 'Montly '
+    - m_Text: 'Monthly '
       m_Image: {fileID: 0}
     - m_Text: 'Yearly '
       m_Image: {fileID: 0}
