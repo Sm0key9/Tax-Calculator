@@ -73,7 +73,7 @@ public class TaxCalculator : MonoBehaviour
     // Run this function on the click event of your 'Calculate' button
     public void Calculate()
     {
-        
+        GetSalaryPayPeriod();
         // Initialisation of variables
         double medicareLevyPaid = 0;
         double incomeTaxPaid = 0;
@@ -108,7 +108,8 @@ public class TaxCalculator : MonoBehaviour
     private string GetSalaryPayPeriod()
     {
         // Get from user. E.g. combobox or radio buttons
-        string salaryPayPeriod = "weekly";
+        string salaryPayPeriod = dropdown.value.ToString();
+        print (salaryPayPeriod);
         return salaryPayPeriod;
     }
 
