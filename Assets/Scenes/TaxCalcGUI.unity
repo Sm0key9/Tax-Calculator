@@ -594,7 +594,7 @@ GameObject:
   - component: {fileID: 290916142}
   - component: {fileID: 290916141}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: NetIncome
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2773,7 +2773,9 @@ MonoBehaviour:
   textToSpeechEnabled: 1
   stage: 0
   grosssalaryinput: {fileID: 1102205474}
-  NetIncome: {fileID: 0}
+  NetIncome: {fileID: 290916141}
+  TaxPaid: {fileID: 1557824771}
+  LevyPaid: {fileID: 1594984451}
 --- !u!114 &1151694038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3531,7 +3533,7 @@ GameObject:
   - component: {fileID: 1557824772}
   - component: {fileID: 1557824771}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: TaxPaid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3577,7 +3579,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Total Tax Paid:'
+  m_text: 'Income Tax Paid:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3666,7 +3668,7 @@ GameObject:
   - component: {fileID: 1594984452}
   - component: {fileID: 1594984451}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Levy Paid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

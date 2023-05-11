@@ -16,6 +16,8 @@ public class TaxCalculator : MonoBehaviour
     public int stage = 0;
     public TMP_InputField grosssalaryinput;
     public TextMeshProUGUI NetIncome;
+    public TextMeshProUGUI TaxPaid;
+    public TextMeshProUGUI LevyPaid;
 
     private void Start()
     {
@@ -109,7 +111,6 @@ public class TaxCalculator : MonoBehaviour
     {
         // Get from user. E.g. combobox or radio buttons
         string salaryPayPeriod = dropdown.value.ToString();
-        print (salaryPayPeriod);
         return salaryPayPeriod;
     }
 
@@ -117,6 +118,18 @@ public class TaxCalculator : MonoBehaviour
     {
         // This is a stub, replace with the real calculation and return the result
         double grossYearlySalary = 50000;
+        if (int.Parse(salaryPayPeriod) == 0)
+        {
+            grossYearlySalary = grossSalaryInput * 52;    
+        }
+        else if (int.Parse(salaryPayPeriod) == 1)
+        {
+            grossYearlySalary = grossSalaryInput * 12;
+        }
+        else
+        {
+            grossYearlySalary = grossSalaryInput;
+        }
         return grossYearlySalary;
     }
 
@@ -167,7 +180,11 @@ public class TaxCalculator : MonoBehaviour
     private void OutputResults(double medicareLevyPaid, double incomeTaxPaid, double netIncome)
     {
         // Output the following to the GUI
+
         // "Medicare levy paid: $" + medicareLevyPaid.ToString("F2");
+        NetIncome.text = ($"Net Income: {netIncome}");
+        TaxPaid.text = ($"Income Tax Paid: {incomeTaxPaid}");
+        LevyPaid.text = ($"Medicare Levy Paid: {medicareLevyPaid}");
         // "Income tax paid: $" + incomeTaxPaid.ToString("F2");
         // "Net income: $" + netIncome.ToString("F2");
     }
