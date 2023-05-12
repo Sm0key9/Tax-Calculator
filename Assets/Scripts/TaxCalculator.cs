@@ -202,9 +202,7 @@ public class TaxCalculator : MonoBehaviour
         NetIncome.text = ($"Net Income: {netIncome}");
         TaxPaid.text = ($"Income Tax Paid: {incomeTaxPaid}");
         LevyPaid.text = ($"Medicare Levy Paid: {medicareLevyPaid}");
-        Speak(NetIncome.text);
-        Speak(TaxPaid.text);
-        Speak(LevyPaid.text);
+        Speak($"{NetIncome.text}  {TaxPaid.text}   {LevyPaid.text}");
         // "Income tax paid: $" + incomeTaxPaid.ToString("F2");
         // "Net income: $" + netIncome.ToString("F2");
     }
