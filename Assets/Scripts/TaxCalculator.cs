@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using UnityEngine.UI;
 using TMPro;
 using System;
+using UnityEditor.Tilemaps;
 
 public class TaxCalculator : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class TaxCalculator : MonoBehaviour
     public TextMeshProUGUI NetIncome;
     public TextMeshProUGUI TaxPaid;
     public TextMeshProUGUI LevyPaid;
-
+    public TextMeshProUGUI Valid;
     private void Start()
     {
         Speak("Welcome to the A.T.O. Tax Calculator Press 1 for weekly. Press 2 for monthly. or Press 3 for Yearly");
@@ -69,7 +70,16 @@ public class TaxCalculator : MonoBehaviour
         }
         else if (stage == 2)
         {
-            Speak("Welcome to stage 2");
+            //Speak("Welcome to stage 2");
+            //Focus on grosssalaryinput
+            grosssalaryinput.ActivateInputField();
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                
+                Calculate();
+            }
+            //Look for Input.Keydown(Enter)
+            //Run Calculate
         }
     }
     // Run this function on the click event of your 'Calculate' button
@@ -102,9 +112,16 @@ public class TaxCalculator : MonoBehaviour
         double grossYearlySalary = 12;
         if (double.TryParse((grosssalaryinput.text), out grossYearlySalary))
         {
+            Valid.text = (" ");
             return grossYearlySalary;
+            
         }
-        else { return 0; }
+        else
+        {
+            Valid.text = ("Please Enter a Valid Input!");
+            Speak(Valid.text);
+            return 0;
+        }
     }
 
     private string GetSalaryPayPeriod()
@@ -185,6 +202,9 @@ public class TaxCalculator : MonoBehaviour
         NetIncome.text = ($"Net Income: {netIncome}");
         TaxPaid.text = ($"Income Tax Paid: {incomeTaxPaid}");
         LevyPaid.text = ($"Medicare Levy Paid: {medicareLevyPaid}");
+        Speak(NetIncome.text);
+        Speak(TaxPaid.text);
+        Speak(LevyPaid.text);
         // "Income tax paid: $" + incomeTaxPaid.ToString("F2");
         // "Net income: $" + netIncome.ToString("F2");
     }
