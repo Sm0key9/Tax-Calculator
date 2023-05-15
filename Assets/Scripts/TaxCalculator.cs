@@ -12,6 +12,7 @@ public class TaxCalculator : MonoBehaviour
     // Constant rate for the Medicare Levy
     const double MEDICARE_LEVY = 0.02;
     public TMP_Dropdown dropdown;
+    public TMP_Dropdown OnOff;
     // Variables
     public bool textToSpeechEnabled = true;
     public int stage = 0;
@@ -20,6 +21,7 @@ public class TaxCalculator : MonoBehaviour
     public TextMeshProUGUI TaxPaid;
     public TextMeshProUGUI LevyPaid;
     public TextMeshProUGUI Valid;
+    
     private void Start()
     {
         Speak("Welcome to the A.T.O. Tax Calculator Press 1 for weekly. Press 2 for monthly. or Press 3 for Yearly");
@@ -38,7 +40,7 @@ public class TaxCalculator : MonoBehaviour
 
     void CheckInput()
     {
-        if (stage == 1)
+        if (stage == 1 && OnOff.value == 0)
         {
             string payperiod = "";
             if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -198,11 +200,16 @@ public class TaxCalculator : MonoBehaviour
     {
         // Output the following to the GUI
 
+
         // "Medicare levy paid: $" + medicareLevyPaid.ToString("F2");
         NetIncome.text = ($"Net Income: {netIncome}");
         TaxPaid.text = ($"Income Tax Paid: {incomeTaxPaid}");
         LevyPaid.text = ($"Medicare Levy Paid: {medicareLevyPaid}");
-        Speak($"{NetIncome.text}  {TaxPaid.text}   {LevyPaid.text}");
+        if (stage == 2 && OnOff.value == 0) 
+        { 
+
+            Speak($"{NetIncome.text}  {TaxPaid.text}   {LevyPaid.text}");
+        }
         // "Income tax paid: $" + incomeTaxPaid.ToString("F2");
         // "Net income: $" + netIncome.ToString("F2");
     }
